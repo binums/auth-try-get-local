@@ -1,18 +1,31 @@
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+
 import SmallCard from '../components/SmallCard';
 import { projectIcons } from '../components/Icons';
 
 import { projects } from '../utils/projectsData';
+import { withApollo } from '../lib/apollo';
 
-const Home = () => (
-  <div className="home">
-    <h1>What Can I Deploy to Static Apps?</h1>
-    <div className="card-grid">
-      {projects.map((project) => {
-        const Icon = projectIcons[project.id];
-        return <SmallCard key={project.id} Icon={Icon} title={project.name} slug={project.slug} />;
-      })}
+const GET_TEST_VALUE = gql`
+  query MyQuery {
+    test {
+      value
+      id
+    }
+  }
+`;
+
+const Home = () => {
+  const { loading, error, data } = useQuery(GET_TEST_VALUE);
+  if (loading) return <p>Loading ...</p>;
+  return (
+    <div className='home'>
+      <h1>Data From Hasura</h1>
+      <p> ID: {data.test[0].id}</p>
+      <p> Value: {data.test[0].value}</p>
     </div>
-  </div>
-);
+  );
+};
 
-export default Home;
+export default withApollo({ ssr: true })(Home);
