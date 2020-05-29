@@ -7,7 +7,7 @@ import AppWrapper, { ContentWrapper } from './Layout.styled';
 import {
   useThemeSwitcherCtx,
   THEME,
-} from '../../contexts/theme/theme.provider';
+} from '../../../contexts/theme/theme.provider';
 
 const Layout: React.FunctionComponent<{ router?: any }> = ({
   router,

@@ -29,6 +29,7 @@
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
     "baseui": "^9.80.2",
+    "date-arithmetic": "^4.1.0",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "moment": "^2.26.0",
