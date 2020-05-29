@@ -6,6 +6,7 @@ import { projectIcons } from '../components/Icons';
 
 import { projects } from '../utils/projectsData';
 import { withApollo } from '../lib/apollo';
+import { Text } from '../stories/1-Button.stories';
 
 const GET_TEST_VALUE = gql`
   query MyQuery {
@@ -24,6 +25,7 @@ const Home = () => {
       <h1>Data From Hasura</h1>
       <p> ID: {data.test[0].id}</p>
       <p> Value: {data.test[0].value}</p>
+      <Text />
     </div>
   );
 };
