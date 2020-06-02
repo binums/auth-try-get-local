@@ -11,6 +11,6 @@ stories.add('Default', () => (
     title={text('title', 'Page Title')}
     subtitle={text('subtitle', 'Subtitle')}
     backdrop={boolean('show backdrop', false)}
-    bgColor={text('background', 'transparent')}
+    bgColor={text('background', '')}
   />
 ));
