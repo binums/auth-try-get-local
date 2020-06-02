@@ -20,6 +20,7 @@ export default function Image({
   style?: any;
 }) {
   return (
+    // @ts-ignore
     <Img
       draggable={false}
       style={style}

@@ -5,6 +5,7 @@ import PageTitle from '../components/template/UiElements/PageTitle/PageTitle';
 
 const stories = storiesOf('UI Elements/Page Title', module);
 stories.addDecorator(withKnobs);
+
 stories.add('Default', () => (
   <PageTitle
     title={text('title', 'Page Title')}
