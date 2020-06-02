@@ -22,9 +22,6 @@ const PageTitle: NextPage<{}> = () => {
       <Container>
         <Block paddingTop={['15px', '20px', '30px', '40px']}>
           <Row>
-            <Col lg={3}>
-              <UiElementsMenu />
-            </Col>
 
             <Col lg={9}>
               <Block paddingTop={['10px', '10px', '10px', 0]}>

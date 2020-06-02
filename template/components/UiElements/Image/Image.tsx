@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'react-image';
+import { Img } from 'react-image';
 
 const Placeholder = () => (
   <img
@@ -20,7 +20,6 @@ export default function Image({
   style?: any;
 }) {
   return (
-    // @ts-ignore
     <Img
       draggable={false}
       style={style}

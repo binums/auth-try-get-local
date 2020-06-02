@@ -10,7 +10,7 @@ import ProductView from '../template/pages/charts/product-view';
 import CashFlow from '../template/pages/charts/cash-flow';
 import Pie from '../template/pages/charts/pie';
 
-const stories = storiesOf('UI Elements/Apex Charts', module).addDecorator(
+const stories = storiesOf('Template Elements/Apex Charts', module).addDecorator(
   StoryContainerDecorator
 );
 stories
