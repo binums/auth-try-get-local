@@ -6,7 +6,7 @@ import PageTitle from '../template/components/UiElements/PageTitle/PageTitle';
 import ImplementedTitle from '../template/pages/uielements/page-title';
 
 const stories = storiesOf('Template Elements/Page Title', module)
-  .addDecorator(withKnobs)
+  .addDecorator(withKnobs({ escapeHTML: false }))
   .addDecorator(StoryContainerDecorator);
 stories
   .add('Default', () => (
