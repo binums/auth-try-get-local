@@ -174,7 +174,7 @@ ul.main-nav li a.active::after {
 .step-menu li::before {
   content: '';
   width: 70px;
-  background-image: url(../public/line.svg);
+  background-image: url(../public/svgs/line.svg);
   background-repeat: no-repeat;
   height: 2px;
   display: inline-flex;

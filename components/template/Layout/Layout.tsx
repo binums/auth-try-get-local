@@ -1,8 +1,5 @@
 import React from 'react';
 import { withRouter } from 'next/router';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import AuthHeader from '../Header/AuthHeader/AuthHeader';
 import AppWrapper, { ContentWrapper } from './Layout.styled';
 import {
   useThemeSwitcherCtx,
@@ -31,15 +28,7 @@ const Layout: React.FunctionComponent<{ router?: any }> = ({
 
   return (
     <AppWrapper className={theme} style={{ backgroundColor: layoutBg }}>
-      {pathname === '/login' || pathname === '/signup' ? (
-        <AuthHeader pathname={pathname} />
-      ) : (
-        <Header />
-      )}
-
       <ContentWrapper>{children}</ContentWrapper>
-
-      {pathname === '/login' || pathname === '/signup' ? '' : <Footer />}
     </AppWrapper>
   );
 };
