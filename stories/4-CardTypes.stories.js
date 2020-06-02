@@ -70,6 +70,7 @@ stories
       price={text('Price', '20.00')}
       btn={text('Button', 'Buy Me!')}
       items={object('Items', [{ id: 0, title: 'Stuff' }])}
+      onClick={() => {}}
     />
   ))
   .add('Image Only', () => (
