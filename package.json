@@ -46,6 +46,7 @@
     "react-scrollspy": "^3.4.2",
     "react-stickynode": "^3.0.2",
     "react-toastify": "^6.0.5",
+    "styled-components": "^5.1.1",
     "styletron-engine-atomic": "^1.4.6",
     "styletron-react": "^5.2.7",
     "uuid": "^8.1.0"
