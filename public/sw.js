@@ -3,42 +3,42 @@ if (!self.define) {
       'require' !== e && (e += '.js');
       let s = Promise.resolve();
       return (
-        a[e] ||
+        c[e] ||
           (s = new Promise(async (s) => {
             if ('document' in self) {
-              const a = document.createElement('script');
-              (a.src = e), document.head.appendChild(a), (a.onload = s);
+              const c = document.createElement('script');
+              (c.src = e), document.head.appendChild(c), (c.onload = s);
             } else importScripts(e), s();
           })),
         s.then(() => {
-          if (!a[e]) throw new Error(`Module ${e} didn’t register its module`);
-          return a[e];
+          if (!c[e]) throw new Error(`Module ${e} didn’t register its module`);
+          return c[e];
         })
       );
     },
-    s = (s, a) => {
-      Promise.all(s.map(e)).then((e) => a(1 === e.length ? e[0] : e));
+    s = (s, c) => {
+      Promise.all(s.map(e)).then((e) => c(1 === e.length ? e[0] : e));
     },
-    a = { require: Promise.resolve(s) };
-  self.define = (s, t, n) => {
-    a[s] ||
-      (a[s] = Promise.resolve().then(() => {
-        let a = {};
-        const i = { uri: location.origin + s.slice(1) };
+    c = { require: Promise.resolve(s) };
+  self.define = (s, r, n) => {
+    c[s] ||
+      (c[s] = Promise.resolve().then(() => {
+        let c = {};
+        const a = { uri: location.origin + s.slice(1) };
         return Promise.all(
-          t.map((s) => {
+          r.map((s) => {
             switch (s) {
               case 'exports':
-                return a;
+                return c;
               case 'module':
-                return i;
+                return a;
               default:
                 return e(s);
             }
           })
         ).then((e) => {
           const s = n(...e);
-          return a.default || (a.default = s), a;
+          return c.default || (c.default = s), c;
         });
       }));
   };
@@ -50,67 +50,83 @@ define('./sw.js', ['./workbox-e032be30'], function (e) {
     e.clientsClaim(),
     e.precacheAndRoute(
       [
-        { url: '/', revision: '3a2w0nY5A-3vFlvAiDfoU' },
-        {
-          url: '/_next/static/3a2w0nY5A-3vFlvAiDfoU/_buildManifest.js',
-          revision: 'fb96ae7926f5104f50f0cf1b3a23a9b5',
-        },
-        {
-          url: '/_next/static/3a2w0nY5A-3vFlvAiDfoU/_ssgManifest.js',
-          revision: 'abee47769bf307639ace4945f9cfd4ff',
-        },
-        {
-          url: '/_next/static/3a2w0nY5A-3vFlvAiDfoU/pages/_app.js',
-          revision: '38e962f82b04507c3c339fc62665b407',
-        },
-        {
-          url: '/_next/static/3a2w0nY5A-3vFlvAiDfoU/pages/_error.js',
-          revision: '3e22c9f52ac0c7784b40bd2ecc88acf1',
-        },
-        {
-          url: '/_next/static/3a2w0nY5A-3vFlvAiDfoU/pages/index.js',
-          revision: 'd7f1b7cfcdf13a6381ad219f9a9c27ab',
-        },
-        {
-          url: '/_next/static/3a2w0nY5A-3vFlvAiDfoU/pages/project/[path].js',
-          revision: '356152ec97a25fe2b04c7cae9d945cf6',
-        },
-        {
-          url: '/_next/static/chunks/10.d8bbd2ce1130732bade4.js',
-          revision: '073e3361c4df1d1dae11be287dfc15f7',
-        },
+        { url: '/', revision: 'v5-MlrbyZnZtOVJRyrdkd' },
         {
           url:
-            '/_next/static/chunks/36719cd325c353e29d964539a2e85d5d1a18e13c.4038ad4773b90c02683a.js',
-          revision: '4f4b0632416de88bbc30b2758b37c0fd',
+            '/_next/static/chunks/503517357ffa78c1874d858633cd1256ec7e5c53.871c46e263a226b1a89d.js',
+          revision: '045df059221694f8075148aaae03b9ad',
         },
         {
-          url: '/_next/static/chunks/commons.d97d161a00b380696f22.js',
-          revision: 'a9b6c9e6fda1043d60458718e71c533d',
+          url: '/_next/static/chunks/9.49588bce5246d982080d.js',
+          revision: 'fc03a2de5f45e3c1857ef7b5b8129605',
+        },
+        {
+          url: '/_next/static/chunks/commons.921b3da692da0b8e589d.js',
+          revision: 'b4051411678d9e0cec8a57973cc0ee53',
         },
         {
           url: '/_next/static/chunks/framework.42ad63201e0238e8f241.js',
           revision: 'ff174a627fd207ab034db22e2bd96c46',
         },
         {
-          url: '/_next/static/css/8d9c9857ade9893c96e9.css',
+          url: '/_next/static/css/ef04c68f5aa2984f57da.css',
           revision: '925e74e6f196bbfb1f279e5309fc69ea',
         },
         {
-          url: '/_next/static/runtime/main-8b6ddcfca155cbd76f5c.js',
-          revision: '709a580cdb342ef746cbf267b908fb5a',
+          url: '/_next/static/runtime/main-7c4fa5c8fa2cdd9d7cff.js',
+          revision: '2d0a239372c1641005d28d6b3a55815a',
         },
         {
-          url: '/_next/static/runtime/polyfills-87b43bd434c89361559f.js',
-          revision: '4f595eb110a6b527f9b3470cd188c8a5',
+          url: '/_next/static/runtime/polyfills-0dc18eca57569c2cfd1d.js',
+          revision: 'fd009b0316d2bdb505c57eaad1b5e082',
         },
         {
-          url: '/_next/static/runtime/webpack-05b4f9dd694196e4773f.js',
-          revision: 'b121beefa3d450954b6bacc363a5d281',
+          url: '/_next/static/runtime/webpack-6f07f063ccc5c56be502.js',
+          revision: 'f7f3c3915a12c0f3cf9dab655b756233',
         },
-        { url: '/favicon.ico', revision: '412192267449ea67eebabd3e62acfe51' },
+        {
+          url: '/_next/static/v5-MlrbyZnZtOVJRyrdkd/_buildManifest.js',
+          revision: 'fb96ae7926f5104f50f0cf1b3a23a9b5',
+        },
+        {
+          url: '/_next/static/v5-MlrbyZnZtOVJRyrdkd/_ssgManifest.js',
+          revision: 'abee47769bf307639ace4945f9cfd4ff',
+        },
+        {
+          url: '/_next/static/v5-MlrbyZnZtOVJRyrdkd/pages/_app.js',
+          revision: 'cd08f9727d39d40c8dad0521ee25bc09',
+        },
+        {
+          url: '/_next/static/v5-MlrbyZnZtOVJRyrdkd/pages/_error.js',
+          revision: '90b049a0f28caf770d7edf66dae6e3fc',
+        },
+        {
+          url: '/_next/static/v5-MlrbyZnZtOVJRyrdkd/pages/index.js',
+          revision: '0e00b4058b259809067e03863f3d38cd',
+        },
+        {
+          url: '/icons/android-chrome-192x192.png',
+          revision: '8c30caf2937dad4e4181e2cc7c3d3c8f',
+        },
+        {
+          url: '/icons/apple-touch-icon.png',
+          revision: 'aa84b3913187950cf4e4079e5a5a2f78',
+        },
+        {
+          url: '/icons/favicon.ico',
+          revision: '940cc6bd3bb401fc3be83df3dfd09488',
+        },
+        {
+          url: '/icons/icon-512x512.png',
+          revision: '837ab4469c705c188326cec571ecb227',
+        },
+        {
+          url: '/images/placeholder.jpg',
+          revision: '069c7191a3551e5d2ac8624444fac3ad',
+        },
         { url: '/manifest.json', revision: '688128be216cc2f753fe641590f2fcd3' },
-        { url: '/zeit.svg', revision: '7b2022f3692adf56949c7019f7ebb670' },
+        { url: '/svgs/line.svg', revision: '036d7b42635b06648b26167c09680e2a' },
+        { url: '/svgs/zeit.svg', revision: 'ad44f077699772c99dd99678980a2908' },
       ],
       { ignoreURLParametersMatching: [] }
     ),
