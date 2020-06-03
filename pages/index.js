@@ -20,14 +20,16 @@ const GET_TEST_VALUE = gql`
 const Home = () => {
   const { loading, error, data } = useQuery(GET_TEST_VALUE);
   if (loading) return <p>Loading ...</p>;
-  return (
-    <div className='home'>
-      <h1>Data From Hasura</h1>
-      <p> ID: {data.test[0].id}</p>
-      <p> Value: {data.test[0].value}</p>
-      <Text />
-    </div>
-  );
+  if (error) return <p>Error Fetching from Hasura</p>;
+  if (data && data.test)
+    return (
+      <div className="home">
+        <h1>Data From Hasura</h1>
+        <p> ID: {data.test[0].id}</p>
+        <p> Value: {data.test[0].value}</p>
+        <Text />
+      </div>
+    );
 };
 
-export default withApollo({ ssr: true })(Home);
+export default withApollo({ ssr: false })(Home);
