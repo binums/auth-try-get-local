@@ -22,7 +22,7 @@ stories
       alignItem={text('Alignment', 'start')}
       price={text('Price', '20.00')}
       href="./"
-      thumb={text('Image', 'https://placekitten.com/400/400')}
+      thumb={text('Image', '/images/placeholder.png')}
     />
   ))
   .add('Instagram', () => (
@@ -74,8 +74,5 @@ stories
     />
   ))
   .add('Image Only', () => (
-    <Image
-      url={text('Image', 'https://placekitten.com/400/400')}
-      alt="Kitty!"
-    />
+    <Image url={text('Image', '/images/placeholder.png')} alt="Kitty!" />
   ));
