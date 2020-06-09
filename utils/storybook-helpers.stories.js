@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Provider as StyletronProvider } from 'styletron-react';
 import { styletron, debug } from '../styletron';
-import { BaseProvider, LightTheme, DarkTheme } from 'baseui';
+import { BaseProvider, DarkTheme } from 'baseui';
 import { ThemeSwitcherProvider, THEME } from '../contexts/theme/theme.provider';
+import { LocalLight } from '../themes/local.light';
 import styled from 'styled-components';
 
 const StorybookContainer = styled.div`
@@ -35,7 +36,7 @@ export const StoryContainerDecorator = (storyFn) => {
         <BaseProvider
           theme={
             theme === THEME.light
-              ? { ...LightTheme, direction: 'ltr' }
+              ? { ...LocalLight, direction: 'ltr' }
               : { ...DarkTheme, direction: 'ltr' }
           }
         >
