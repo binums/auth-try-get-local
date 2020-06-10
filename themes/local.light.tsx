@@ -74,27 +74,4 @@ const primitives = {
   mono1000: '#6D7D8B',
 };
 
-const overrides = {
-  typography: {
-    ParagraphXSmall: '10/14 normal 400',
-    ParagraphSmall: '12/16 normal 400',
-    ParagraphMedium: '14/20 normal 400',
-    ParagraphLarge: '16/24 normal 400',
-    LabelXSmall: '12/16 normal 400',
-    LabelSmall: '14/16 normal 400',
-    LabelMedium: '16/18 normal 400',
-    LabelLarge: '18/20 normal 400',
-    HeadingXSmall: '14/19 normal 500',
-    HeadingSmall: '18/24 normal 500',
-    HeadingMedium: '22/30 normal 500',
-    HeadingLarge: '26/34 normal 500',
-    HeadingXLarge: '30/38 normal 500',
-    HeadingXXLarge: '34/42 normal 500',
-    DisplayXSmall: '42/50 normal 700',
-    DisplaySmall: '50/58 normal 700',
-    DisplayMedium: '58/64 normal 700',
-    DisplayLarge: '102/118 normal 700',
-  }
-}
-
-export const LocalLight = createTheme(primitives, overrides);
+export const LocalLight = createTheme(primitives);
