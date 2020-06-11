@@ -8,7 +8,7 @@ type CardHeaderProps = {
 
 const CardHeader = ({ children, height }: CardHeaderProps) => {
   return (
-    <div className={styles.header}>
+    <div className={styles.header} style={{height: height}}>
       {children}
     </div>
   );
