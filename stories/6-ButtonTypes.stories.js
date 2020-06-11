@@ -4,7 +4,7 @@ import { StoryContainerDecorator } from '../utils/storybook-helpers.stories';
 import ButtonEndEnhancer from '../components/common/button/withEnhancer/ButtonEndEnhancer';
 import { Delete } from 'baseui/icon';
 
-const stories = storiesOf('Common/Button With Enhancer', module).addDecorator(
+const stories = storiesOf('Common/Button Types', module).addDecorator(
   StoryContainerDecorator
 );
 stories.add('End Enhancer', () => (

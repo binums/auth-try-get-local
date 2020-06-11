@@ -14,10 +14,9 @@ const StorybookContainer = styled.div`
   justify-content: center;
   & > * {
     background: white;
-    max-width: 98vh;
+    max-width: 100%;
     min-width: 300px;
-    padding: 1rem;
-    border-radius: 3px;
+    border-radius: 4px;
   }
 `;
 
