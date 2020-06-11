@@ -6,6 +6,7 @@ type ButtonEndEnhancerProps = {
   title: string;
   titleColor?: string;
   bgColor?: string;
+  bgHover?: string;
   enhancer: ReactComponentLike;
 };
 
@@ -13,13 +14,20 @@ const ButtonEndEnhancer = ({
   title,
   titleColor,
   bgColor,
+  bgHover,
   enhancer,
 }: ButtonEndEnhancerProps) => {
   return (
     <Button
-      $style={{
-        backgroundColor: bgColor,
-        color: titleColor,
+      overrides={{
+        BaseButton: {
+          style: ({ $theme }) => {
+            return {
+              color: titleColor,
+              backgroundColor: bgColor,
+            };
+          },
+        },
       }}
       endEnhancer={enhancer}
     >
@@ -31,6 +39,7 @@ const ButtonEndEnhancer = ({
 ButtonEndEnhancer.defaultProps = {
   title: '',
   bgColor: 'transparent',
+  bgHover: 'transparent',
   enhancer: null,
 };
 
