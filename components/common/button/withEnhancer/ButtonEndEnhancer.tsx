@@ -25,6 +25,8 @@ const ButtonEndEnhancer = ({
             return {
               color: titleColor,
               backgroundColor: bgColor,
+              paddingRight: 0,
+              paddingLeft: 0,
               ':hover': {
                 backgroundColor: bgHover
               }

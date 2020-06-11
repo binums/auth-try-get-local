@@ -6,7 +6,7 @@ type CardTitleProps = {
 };
 
 const CardTitle = ({ title }: CardTitleProps) => {
-  return <Title>{title}</Title>;
+  return <Title>{title.toUpperCase()}</Title>;
 };
 
 export default CardTitle;

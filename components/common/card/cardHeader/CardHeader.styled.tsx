@@ -5,4 +5,5 @@ export const Header = styled('div', ({ $theme }) => ({
   flexFlow: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
+  padding: '1.5rem',
 }));
