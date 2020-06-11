@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CardHeader.module.scss';
+import { Header } from './CardHeader.styled';
 
 type CardHeaderProps = {
   children: any;
@@ -8,9 +8,9 @@ type CardHeaderProps = {
 
 const CardHeader = ({ children, height }: CardHeaderProps) => {
   return (
-    <div className={styles.header} style={{height: height}}>
+    <Header style={{height: height}}>
       {children}
-    </div>
+    </Header>
   );
 };
 

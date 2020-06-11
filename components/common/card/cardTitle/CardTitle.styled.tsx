@@ -1,4 +1,4 @@
-import {styled} from "baseui";
+import { styled } from 'baseui';
 
 export const Title = styled('h2', ({ $theme }) => ({
   ...$theme.typography.font550,
