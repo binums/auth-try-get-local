@@ -17,7 +17,10 @@ const ButtonEndEnhancer = ({
 }: ButtonEndEnhancerProps) => {
   return (
     <Button
-      $style={{ backgroundColor: bgColor, color: titleColor }}
+      $style={{
+        backgroundColor: bgColor,
+        color: titleColor,
+      }}
       endEnhancer={enhancer}
     >
       {title.toUpperCase()}
