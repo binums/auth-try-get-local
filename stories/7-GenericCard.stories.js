@@ -14,7 +14,7 @@ import Card from '../components/common/card/Card';
 const stories = storiesOf('Common/Generic Card', module)
   .addDecorator(StoryContainerDecorator)
   .addDecorator(withKnobs({ escapeHTML: false }));
-stories.add('Card Header', () => (
+stories.add('Login', () => (
   <Card style={{ display: 'flex', flexFlow: 'column' }}>
     <CardHeader>
       <CardTitle title="Sign Up" />
