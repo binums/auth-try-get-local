@@ -3,15 +3,10 @@ import { Header } from './CardHeader.styled';
 
 type CardHeaderProps = {
   children: any;
-  height: string;
 };
 
-const CardHeader = ({ children, height }: CardHeaderProps) => {
-  return (
-    <Header style={{height: height}}>
-      {children}
-    </Header>
-  );
+const CardHeader = ({ children }: CardHeaderProps) => {
+  return <Header>{children}</Header>;
 };
 
 export default CardHeader;

@@ -1,34 +1,30 @@
 import React from 'react';
-import { Button } from 'baseui/button';
+import {Button, KIND} from 'baseui/button';
 import { ReactComponentLike } from 'prop-types';
 
 type ButtonEndEnhancerProps = {
   title: string;
-  titleColor?: string;
-  bgColor?: string;
-  bgHover?: string;
+  kind: any;
   enhancer: ReactComponentLike;
 };
 
 const ButtonEndEnhancer = ({
   title,
-  titleColor,
-  bgColor,
-  bgHover,
+  kind,
   enhancer,
 }: ButtonEndEnhancerProps) => {
   return (
     <Button
+      kind={kind}
       overrides={{
         BaseButton: {
           style: ({ $theme }) => {
-            return {
-              color: titleColor,
-              backgroundColor: bgColor,
+            return kind === KIND.minimal && {
               paddingRight: 0,
               paddingLeft: 0,
-              ':hover': {
-                backgroundColor: bgHover
+              ':active': {
+                background: $theme.colors.buttonMinimalFill,
+                color: $theme.colors.buttonMinimalActive
               }
             };
           },
@@ -43,8 +39,7 @@ const ButtonEndEnhancer = ({
 
 ButtonEndEnhancer.defaultProps = {
   title: '',
-  bgColor: 'transparent',
-  bgHover: 'transparent',
+  kind: KIND.primary,
   enhancer: null,
 };
 
