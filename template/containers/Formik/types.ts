@@ -6,6 +6,7 @@ export interface FormDataSchema {
 
 export type FormField =
   | FormTextField
+  | FormPasswordField
   | FormTextAreaField
   | FormIntegerField
   | FormFloatField
@@ -27,6 +28,10 @@ export interface FormBaseField {
 
 export interface FormTextField extends FormBaseField {
   type: 'text';
+}
+
+export interface FormPasswordField extends FormBaseField {
+  type: 'password';
 }
 
 export interface FormTextAreaField extends FormBaseField {

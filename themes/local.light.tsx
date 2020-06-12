@@ -74,4 +74,13 @@ const primitives = {
   mono1000: '#6D7D8B',
 };
 
-export const LocalLight = createTheme(primitives);
+const overrides = {
+  colors: {
+    buttonMinimalHover: 'transparent',
+    buttonMinimalFill: 'transparent',
+    buttonMinimalText: '#B9C2CA',
+    buttonMinimalActive: '#9BA8B3',
+  },
+};
+
+export const LocalLight = createTheme(primitives, overrides);

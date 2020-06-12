@@ -21,7 +21,7 @@ export const FormikFormControl: React.FC<Props> = ({
         const error: string | undefined = getIn(errors, name);
         return (
           <Block marginBottom="30px">
-            <FormControl label={label} caption={caption} error={error}>
+            <FormControl label={label.toUpperCase()} caption={caption} error={error}>
               {children}
             </FormControl>
           </Block>
