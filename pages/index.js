@@ -6,7 +6,7 @@ import { projectIcons } from '../components/Icons';
 
 import { projects } from '../utils/projectsData';
 import { withApollo } from '../lib/apollo';
-import { Text } from '../stories/1-Button.stories';
+import { Text } from '../stories/Demo/1-Button.stories';
 
 const GET_TEST_VALUE = gql`
   query MyQuery {

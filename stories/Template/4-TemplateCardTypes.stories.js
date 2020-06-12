@@ -1,14 +1,14 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { number, object, text, withKnobs } from '@storybook/addon-knobs';
-import { StoryContainerDecorator } from '../utils/storybook-helpers.stories';
-import ProductCard from '../template/components/UiElements/ProductCard/ProductCard';
-import Image from '../template/components/UiElements/Image/Image';
-import InstagramCard from '../template/components/UiElements/InstagramCard/InstagramCard';
-import PricingCard from '../template/components/UiElements/PricingCard/PricingCard';
-import ListGridCard from '../template/components/UiElements/ListGridCard/ListGridCard';
+import { StoryContainerDecorator } from '../../utils/storybook-helpers.stories';
+import ProductCard from '../../template/components/UiElements/ProductCard/ProductCard';
+import Image from '../../template/components/UiElements/Image/Image';
+import InstagramCard from '../../template/components/UiElements/InstagramCard/InstagramCard';
+import PricingCard from '../../template/components/UiElements/PricingCard/PricingCard';
+import ListGridCard from '../../template/components/UiElements/ListGridCard/ListGridCard';
 import { Button } from 'baseui/button';
-import WidgetCard from '../template/components/UiElements/WidgetCard/WidgetCard';
+import WidgetCard from '../../template/components/UiElements/WidgetCard/WidgetCard';
 import { Avatar } from 'baseui/avatar';
 
 const stories = storiesOf('Template Elements/Card Types', module)
@@ -22,7 +22,7 @@ stories
       alignItem={text('Alignment', 'start')}
       price={text('Price', '20.00')}
       href="./"
-      thumb={text('Image', 'https://placekitten.com/400/400')}
+      thumb={text('Image', '/images/placeholder.png')}
     />
   ))
   .add('Instagram', () => (
@@ -74,8 +74,5 @@ stories
     />
   ))
   .add('Image Only', () => (
-    <Image
-      url={text('Image', 'https://placekitten.com/400/400')}
-      alt="Kitty!"
-    />
+    <Image url={text('Image', '/images/placeholder.png')} alt="Kitty!" />
   ));

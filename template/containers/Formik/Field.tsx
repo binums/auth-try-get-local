@@ -16,7 +16,7 @@ interface Props {
 export default function Field({ field, name }: Props) {
   return (
     <FormikConsumer>
-      {formikProps => {
+      {(formikProps) => {
         const { errors, touched, values } = formikProps;
         const error: string | undefined = getIn(errors, name);
         const isTouched: boolean = !!getIn(touched, name);
@@ -67,7 +67,38 @@ function FieldSwitch({
           overrides={{
             InputContainer: {
               style: () => {
-                return { backgroundColor: 'transparent' };
+                return {
+                  backgroundColor: 'transparent',
+                  borderTopWidth: 0,
+                  borderRightWidth: 0,
+                  borderLeftWidth: 0,
+                  borderBottomWidth: '2px',
+                };
+              },
+            },
+          }}
+        />
+      );
+    }
+
+    case 'password': {
+      return (
+        <Input
+          name={name}
+          value={value}
+          onChange={(e: any) => setFieldValue(name, e.target.value)}
+          onBlur={onBlur}
+          type="password"
+          overrides={{
+            InputContainer: {
+              style: () => {
+                return {
+                  backgroundColor: 'transparent',
+                  borderTopWidth: 0,
+                  borderRightWidth: 0,
+                  borderLeftWidth: 0,
+                  borderBottomWidth: '2px',
+                };
               },
             },
           }}
@@ -130,10 +161,10 @@ function FieldSwitch({
       return (
         <RadioGroup
           value={value}
-          onChange={e => setFieldValue(name, e.target.value)}
+          onChange={(e) => setFieldValue(name, e.target.value)}
           onBlur={onBlur}
         >
-          {options.map(option => (
+          {options.map((option) => (
             <Radio key={option.value} value={option.value}>
               {option.label}
             </Radio>
@@ -157,7 +188,7 @@ function FieldSwitch({
         <Select
           options={options}
           value={value}
-          onChange={params => setFieldValue(name, params.value)}
+          onChange={(params) => setFieldValue(name, params.value)}
           onBlur={onBlur}
           overrides={{
             ControlContainer: {
