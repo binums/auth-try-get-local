@@ -1,4 +1,4 @@
-import { FormDataSchema, FormUISchema } from './types';
+import { FormDataSchema, FormUISchema } from '../components/common/formik/types';
 
 export const dataSchema: FormDataSchema = {
   fields: {

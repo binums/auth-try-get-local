@@ -1,7 +1,6 @@
 import React from 'react';
-import { isEmpty } from 'lodash';
 import { getIn, FormikConsumer, FormikProps } from 'formik';
-import { Input, InternalState } from 'baseui/input';
+import { Input } from 'baseui/input';
 import { Textarea } from 'baseui/textarea';
 import { Checkbox } from 'baseui/checkbox';
 import { RadioGroup, Radio } from 'baseui/radio';
@@ -74,6 +73,7 @@ function FieldSwitch({
           placeholder={placeholder}
           onChange={(e: any) => setFieldValue(name, e.target.value)}
           onBlur={onBlur}
+          type="text"
           overrides={{
             InputContainer: {
               style: ({ $theme, $isFocused }) => {

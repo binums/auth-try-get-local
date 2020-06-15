@@ -7,7 +7,7 @@ import CardTitle from '../components/common/card/cardTitle/CardTitle';
 import CardDivider from '../components/common/card/cardDivider/CardDivider';
 import { Delete } from 'baseui/icon';
 import ButtonEndEnhancer from '../components/common/button/withEnhancer/ButtonEndEnhancer';
-import CustomForm from '../template/containers/Formik/CustomForm';
+import CustomForm from '../components/common/formik/CustomForm';
 import { KIND } from 'baseui/button';
 import Card from '../components/common/card/Card';
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Title } from './CardTitle.styled';
 
-type CardTitleProps = {
+interface Props {
   title: string;
-};
+}
 
-const CardTitle = ({ title }: CardTitleProps) => {
+const CardTitle: React.FC<Props> = ({ title }) => {
   return <Title>{title.toUpperCase()}</Title>;
 };
 

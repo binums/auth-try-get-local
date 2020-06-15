@@ -4,8 +4,8 @@ import { Block } from 'baseui/block';
 import FormikFormControl from './FormikFormControl';
 import Field from './Field';
 import { FormDataSchema, FormUISchema, FormField } from './types';
-import { dataSchema, uiSchema } from './schemas';
-import ButtonFullWidth from '../../../components/common/button/fullWidth/ButtonFullWidth';
+import { dataSchema, uiSchema } from '../../../__mocks__/schemas';
+import ButtonFullWidth from '../button/fullWidth/ButtonFullWidth';
 
 interface FormProps {
   initialValues: { [key: string]: any };

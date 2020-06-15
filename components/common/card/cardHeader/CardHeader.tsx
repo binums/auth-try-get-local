@@ -1,11 +1,11 @@
 import React from 'react';
 import { Header } from './CardHeader.styled';
 
-type CardHeaderProps = {
+interface Props {
   children: any;
-};
+}
 
-const CardHeader = ({ children }: CardHeaderProps) => {
+const CardHeader: React.FC<Props> = ({ children }) => {
   return <Header>{children}</Header>;
 };
 
