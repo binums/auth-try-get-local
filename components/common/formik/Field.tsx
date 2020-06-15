@@ -1,4 +1,5 @@
 import React from 'react';
+import { isEmpty } from 'lodash';
 import { getIn, FormikConsumer, FormikProps } from 'formik';
 import { Input } from 'baseui/input';
 import { Textarea } from 'baseui/textarea';
@@ -27,9 +28,9 @@ export default function Field({ field, name, placeholder }: Props) {
             name={name}
             field={field}
             placeholder={placeholder}
-            pristine={!isTouched}
-            hasError={isTouched && !!error}
-            isValid={!error && isTouched}
+            pristine={!isTouched || isEmpty(value)}
+            hasError={!!error}
+            isValid={!error}
             value={value}
             {...formikProps}
           />
@@ -88,11 +89,18 @@ function FieldSwitch({
                   inputStyle = {
                     ...inputStyle,
                     borderColor: $theme.colors.mono1000,
+                  };
+                }
+                return inputStyle;
+              },
+            },
+            Input: {
+              style: ({ $theme, $isFocused }) => {
+                if (!pristine && isValid && !$isFocused) {
+                  return {
                     color: $theme.colors.mono1000,
                   };
                 }
-
-                return inputStyle;
               },
             },
           }}
@@ -126,8 +134,16 @@ function FieldSwitch({
                     color: $theme.colors.mono1000,
                   };
                 }
-
                 return inputStyle;
+              },
+            },
+            Input: {
+              style: ({ $theme, $isFocused }) => {
+                if (!pristine && isValid && !$isFocused) {
+                  return {
+                    color: $theme.colors.mono1000,
+                  };
+                }
               },
             },
           }}

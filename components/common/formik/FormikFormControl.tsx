@@ -17,7 +17,7 @@ const FormikFormControl: React.FC<Props> = ({
 }) => {
   return (
     <FormikConsumer>
-      {({ errors, touched }) => {
+      {({ errors, touched, isValid }) => {
         const error: string | undefined = getIn(errors, name);
         return (
           <Block marginBottom="30px">
@@ -25,6 +25,18 @@ const FormikFormControl: React.FC<Props> = ({
               label={label.toUpperCase()}
               caption={caption}
               error={error}
+              overrides={{
+                Label: {
+                  style: ({ $theme }) => {
+                    return {
+                      color: $theme.colors.mono600,
+                      'label + div:focus-within': {
+                        color: $theme.colors.primary
+                      }
+                    };
+                  }
+                }
+              }}
             >
               {children}
             </FormControl>
