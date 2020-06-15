@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { Block } from 'baseui/block';
 import FormikFormControl from './FormikFormControl';
 import Field from './Field';
 import { FormDataSchema, FormUISchema, FormField } from './types';
-import { dataSchema, uiSchema } from './schemas';
-import ButtonFullWidth from '../../../components/common/button/fullWidth/ButtonFullWidth';
+import { dataSchema, uiSchema } from '../../../__mocks__/schemas';
+import ButtonFullWidth from '../button/fullWidth/ButtonFullWidth';
 
 interface FormProps {
   initialValues: { [key: string]: any };
@@ -37,11 +37,9 @@ function Form({ initialValues, dataSchema, uiSchema, onSubmit }: FormProps) {
                 >
                   {fields.map((fieldName) => {
                     const field = fieldsData[fieldName];
-
                     if (!field) {
                       throw new Error('Wrong field name in ui schema');
                     }
-
                     if (!areFieldConditionsFulfilled({ values, field })) {
                       return null;
                     }
@@ -53,7 +51,11 @@ function Form({ initialValues, dataSchema, uiSchema, onSubmit }: FormProps) {
                         label={field.label}
                         caption={field.caption}
                       >
-                        <Field field={field} name={fieldName} />
+                        <Field
+                          field={field}
+                          name={fieldName}
+                          placeholder={field.placeholder}
+                        />
                       </FormikFormControl>
                     );
                   })}
