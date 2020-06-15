@@ -20,6 +20,7 @@ export type FormField =
 export interface FormBaseField {
   label?: string;
   caption?: string;
+  placeholder?: string;
   error?: string;
   required?: boolean;
   checkboxLabel?: string;

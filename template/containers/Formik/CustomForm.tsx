@@ -53,7 +53,7 @@ function Form({ initialValues, dataSchema, uiSchema, onSubmit }: FormProps) {
                         label={field.label}
                         caption={field.caption}
                       >
-                        <Field field={field} name={fieldName} />
+                        <Field field={field} name={fieldName} placeholder={field.placeholder} />
                       </FormikFormControl>
                     );
                   })}
