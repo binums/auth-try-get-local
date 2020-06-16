@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider } from './CardDivider.styled';
 
-const CardDivider = ({}) => {
+const CardDivider = () => {
   return <Divider />;
 };
 

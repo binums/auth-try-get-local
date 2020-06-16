@@ -72,14 +72,21 @@ const primitives = {
   mono800: '#8997A3',
   mono900: '#7F8D9A',
   mono1000: '#6D7D8B',
+  black: '#313E47'
 };
 
 const overrides = {
   colors: {
+    /** Button **/
+    // Primary
+    buttonPrimaryHover: primitives.primary300,
+
+    // Minimal
     buttonMinimalHover: 'transparent',
     buttonMinimalFill: 'transparent',
-    buttonMinimalText: '#B9C2CA',
-    buttonMinimalActive: '#9BA8B3',
+    buttonMinimalText: primitives.mono400,
+    buttonMinimalActive: primitives.mono600,
+
   },
 };
 

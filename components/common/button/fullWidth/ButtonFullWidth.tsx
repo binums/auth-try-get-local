@@ -1,17 +1,13 @@
 import React from 'react';
 import { Button, KIND } from 'baseui/button';
 
-type ButtonFullWidthProps = {
+interface Props {
   title: string;
   kind?: any;
   type?: any;
-};
+}
 
-const ButtonFullWidth = ({
-  title,
-  kind,
-  type,
-}: ButtonFullWidthProps) => {
+const ButtonFullWidth: React.FC<Props> = ({ title, kind, type }) => {
   return (
     <Button
       kind={kind}
@@ -20,7 +16,7 @@ const ButtonFullWidth = ({
         BaseButton: {
           style: ({ $theme }) => {
             return {
-              width: '100%'
+              width: '100%',
             };
           },
         },
