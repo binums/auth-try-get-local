@@ -10,9 +10,10 @@ on:
       - master
 
 env:
-  AZURE_FUNCTIONAPP_NAME: get-local-frontend # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '12.x' # set this to the node version to use (supports 8.x, 10.x, 12.x)
+  AZURE_FUNCTIONAPP_NAME: get-local-frontend
+  AZURE_FUNCTIONAPP_DEV_NAME: get-local-frontend-Development
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
+  NODE_VERSION: '12.x'
 
 jobs:
   build-and-deploy-production:
@@ -63,7 +64,6 @@ jobs:
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v1
         with:
-          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          slot-name: 'Development'
+          app-name: ${{ env.AZURE_FUNCTIONAPP_DEV_NAME }}
           publish-profile: ${{ secrets.SCM_CREDENTIALS }}
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
