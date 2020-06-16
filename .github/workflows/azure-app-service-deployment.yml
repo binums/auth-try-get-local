@@ -39,6 +39,7 @@ jobs:
         uses: azure/webapps-deploy@v1
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+          slot-name: 'production'
           publish-profile: ${{ secrets.SCM_CREDENTIALS }}
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
 
@@ -65,5 +66,6 @@ jobs:
         uses: azure/webapps-deploy@v1
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_DEV_NAME }}
+          # slot-name: 'Development'
           publish-profile: ${{ secrets.SCM_CREDENTIALS }}
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
