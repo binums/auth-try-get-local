@@ -1,22 +1,13 @@
-// const withPWA = require('next-pwa');
+const withPWA = require('next-pwa');
 
-// module.exports = withPWA({
-//   pwa: {
-//     dest: 'public',
-//   },
-//   exportTrailingSlash: true,
-//   exportPathMap: function () {
-//     return {
-//       '/': { page: '/' },
-//     };
-//   },
-// });
-
-module.exports = {
+module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+  },
   exportTrailingSlash: true,
   exportPathMap: function () {
     return {
       '/': { page: '/' },
     };
   },
-};
+});
