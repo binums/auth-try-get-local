@@ -2,10 +2,10 @@ import React from 'react';
 import { Formik } from 'formik';
 import { Button } from 'baseui/button';
 import { Block } from 'baseui/block';
-import FormikFormControl from './FormikFormControl';
-import Field from './Field';
-import { FormDataSchema, FormUISchema, FormField } from './types';
-import { dataSchema, uiSchema } from './schemas';
+import FormikFormControl from '../../../components/common/formik/FormikFormControl';
+import Field from '../../../components/common/formik/Field';
+import { FormDataSchema, FormUISchema, FormField } from '../../../components/common/formik/types';
+import { dataSchema, uiSchema } from '../../../__mocks__/schemas';
 
 interface FormProps {
   initialValues: { [key: string]: any };

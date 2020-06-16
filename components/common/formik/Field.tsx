@@ -1,4 +1,5 @@
 import React from 'react';
+import { isEmpty } from 'lodash';
 import { getIn, FormikConsumer, FormikProps } from 'formik';
 import { Input } from 'baseui/input';
 import { Textarea } from 'baseui/textarea';
@@ -10,10 +11,11 @@ import { FormField } from './types';
 
 interface Props {
   name: string;
+  placeholder?: string;
   field: FormField;
 }
 
-export default function Field({ field, name }: Props) {
+export default function Field({ field, name, placeholder }: Props) {
   return (
     <FormikConsumer>
       {(formikProps) => {
@@ -25,8 +27,10 @@ export default function Field({ field, name }: Props) {
           <FieldSwitch
             name={name}
             field={field}
-            hasError={isTouched && !!error}
-            isValid={!error && isTouched}
+            placeholder={placeholder}
+            pristine={!isTouched || isEmpty(value)}
+            hasError={!!error}
+            isValid={!error}
             value={value}
             {...formikProps}
           />
@@ -38,7 +42,9 @@ export default function Field({ field, name }: Props) {
 
 type FieldSwitchProps = {
   name: string;
+  placeholder: string;
   field: FormField;
+  pristine: boolean;
   hasError: boolean;
   isValid: boolean;
   value: any;
@@ -48,6 +54,9 @@ type FieldSwitchProps = {
 
 function FieldSwitch({
   name,
+  placeholder,
+  pristine,
+  isValid,
   field,
   handleChange,
   setFieldValue,
@@ -62,18 +71,36 @@ function FieldSwitch({
         <Input
           name={name}
           value={value}
+          placeholder={placeholder}
           onChange={(e: any) => setFieldValue(name, e.target.value)}
           onBlur={onBlur}
+          type="text"
           overrides={{
             InputContainer: {
-              style: () => {
-                return {
+              style: ({ $theme, $isFocused }) => {
+                let inputStyle: any = {
                   backgroundColor: 'transparent',
                   borderTopWidth: 0,
                   borderRightWidth: 0,
                   borderLeftWidth: 0,
                   borderBottomWidth: '2px',
                 };
+                if (!pristine && isValid && !$isFocused) {
+                  inputStyle = {
+                    ...inputStyle,
+                    borderColor: $theme.colors.mono1000,
+                  };
+                }
+                return inputStyle;
+              },
+            },
+            Input: {
+              style: ({ $theme, $isFocused }) => {
+                if (!pristine && isValid && !$isFocused) {
+                  return {
+                    color: $theme.colors.mono1000,
+                  };
+                }
               },
             },
           }}
@@ -86,19 +113,37 @@ function FieldSwitch({
         <Input
           name={name}
           value={value}
+          placeholder={placeholder}
           onChange={(e: any) => setFieldValue(name, e.target.value)}
           onBlur={onBlur}
           type="password"
           overrides={{
             InputContainer: {
-              style: () => {
-                return {
+              style: ({ $theme, $isFocused }) => {
+                let inputStyle: any = {
                   backgroundColor: 'transparent',
                   borderTopWidth: 0,
                   borderRightWidth: 0,
                   borderLeftWidth: 0,
                   borderBottomWidth: '2px',
                 };
+                if (!pristine && isValid && !$isFocused) {
+                  inputStyle = {
+                    ...inputStyle,
+                    borderColor: $theme.colors.mono1000,
+                    color: $theme.colors.mono1000,
+                  };
+                }
+                return inputStyle;
+              },
+            },
+            Input: {
+              style: ({ $theme, $isFocused }) => {
+                if (!pristine && isValid && !$isFocused) {
+                  return {
+                    color: $theme.colors.mono1000,
+                  };
+                }
               },
             },
           }}
@@ -111,6 +156,7 @@ function FieldSwitch({
         <Textarea
           name={name}
           value={value}
+          placeholder={placeholder}
           onChange={(e: any) => setFieldValue(name, e.target.value)}
           onBlur={onBlur}
           overrides={{
@@ -129,6 +175,7 @@ function FieldSwitch({
         <Input
           name={name}
           value={value}
+          placeholder={placeholder}
           onChange={handleChange}
           onBlur={onBlur}
           type="number"
@@ -177,6 +224,7 @@ function FieldSwitch({
       return (
         <Datepicker
           value={value}
+          placeholder={placeholder}
           onChange={({ date }) => setFieldValue(name, date)}
         />
       );
@@ -188,6 +236,7 @@ function FieldSwitch({
         <Select
           options={options}
           value={value}
+          placeholder={placeholder}
           onChange={(params) => setFieldValue(name, params.value)}
           onBlur={onBlur}
           overrides={{

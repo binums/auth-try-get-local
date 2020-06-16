@@ -1,4 +1,4 @@
-define('./workbox-e032be30.js', ['exports'], function (t) {
+define('./workbox-4d0bff02.js', ['exports'], function (t) {
   'use strict';
   try {
     self['workbox:core:5.1.3'] && _();
@@ -147,10 +147,10 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
       [u.prefix, t, u.suffix].filter((t) => t && t.length > 0).join('-'),
     f = (t) => t || l(u.precache),
     w = (t) => t || l(u.runtime);
-  function d(t) {
+  function p(t) {
     t.then(() => {});
   }
-  const p = new Set();
+  const d = new Set();
   class y {
     constructor(t, e, { onupgradeneeded: s, onversionchange: n } = {}) {
       (this.o = null),
@@ -294,12 +294,12 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         url: (t = m(t)),
         timestamp: e,
         cacheName: this.m,
-        id: this.R(t),
+        id: this.v(t),
       };
       await this.o.put('cache-entries', s);
     }
     async getTimestamp(t) {
-      return (await this.o.get('cache-entries', this.R(t))).timestamp;
+      return (await this.o.get('cache-entries', this.v(t))).timestamp;
     }
     async expireEntries(t, e) {
       const s = await this.o.transaction(
@@ -330,13 +330,13 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         await this.o.delete('cache-entries', t.id), n.push(t.url);
       return n;
     }
-    R(t) {
+    v(t) {
       return this.m + '|' + m(t);
     }
   }
-  class R {
+  class v {
     constructor(t, e = {}) {
-      (this.v = !1),
+      (this.R = !1),
         (this.U = !1),
         (this.L = e.maxEntries),
         (this.N = e.maxAgeSeconds),
@@ -344,13 +344,13 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         (this._ = new q(t));
     }
     async expireEntries() {
-      if (this.v) return void (this.U = !0);
-      this.v = !0;
+      if (this.R) return void (this.U = !0);
+      this.R = !0;
       const t = this.N ? Date.now() - 1e3 * this.N : 0,
         e = await this._.expireEntries(t, this.L),
         s = await self.caches.open(this.m);
       for (const t of e) await s.delete(t);
-      (this.v = !1), this.U && ((this.U = !1), d(this.expireEntries()));
+      (this.R = !1), this.U && ((this.U = !1), p(this.expireEntries()));
     }
     async updateTimestamp(t) {
       await this._.setTimestamp(t, Date.now());
@@ -365,9 +365,9 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
       (this.U = !1), await this._.expireEntries(1 / 0);
     }
   }
-  const v = (t, e) => t.filter((t) => e in t),
+  const R = (t, e) => t.filter((t) => e in t),
     U = async ({ request: t, mode: e, plugins: s = [] }) => {
-      const n = v(s, 'cacheKeyWillBeUsed');
+      const n = R(s, 'cacheKeyWillBeUsed');
       let i = t;
       for (const t of n)
         (i = await t.cacheKeyWillBeUsed.call(t, { mode: e, request: i })),
@@ -428,7 +428,7 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
       })({ event: i, plugins: r, response: n, request: o });
       if (!h) return;
       const u = await self.caches.open(t),
-        l = v(r, 'cacheDidUpdate'),
+        l = R(r, 'cacheDidUpdate'),
         f =
           l.length > 0
             ? await L({ cacheName: t, matchOptions: c, request: o })
@@ -439,7 +439,7 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         throw (
           ('QuotaExceededError' === t.name &&
             (await (async function () {
-              for (const t of p) await t();
+              for (const t of d) await t();
             })()),
           t)
         );
@@ -462,7 +462,7 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         const t = await n.preloadResponse;
         if (t) return t;
       }
-      const r = v(i, 'fetchDidFail'),
+      const r = R(i, 'fetchDidFail'),
         a = r.length > 0 ? t.clone() : null;
       try {
         for (const e of i)
@@ -500,12 +500,12 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
   try {
     self['workbox:strategies:5.1.3'] && _();
   } catch (t) {}
-  const E = {
+  const O = {
     cacheWillUpdate: async ({ response: t }) =>
       200 === t.status || 0 === t.status ? t : null,
   };
-  let K;
-  async function M(t, e) {
+  let E;
+  async function K(t, e) {
     const s = t.clone(),
       n = {
         headers: new Headers(s.headers),
@@ -514,17 +514,17 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
       },
       i = e ? e(n) : n,
       r = (function () {
-        if (void 0 === K) {
+        if (void 0 === E) {
           const t = new Response('');
           if ('body' in t)
             try {
-              new Response(t.body), (K = !0);
+              new Response(t.body), (E = !0);
             } catch (t) {
-              K = !1;
+              E = !1;
             }
-          K = !1;
+          E = !1;
         }
-        return K;
+        return E;
       })()
         ? s.body
         : await s.blob();
@@ -533,7 +533,7 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
   try {
     self['workbox:precaching:5.1.3'] && _();
   } catch (t) {}
-  function O(t) {
+  function M(t) {
     if (!t) throw new s('add-to-cache-list-unexpected-type', { entry: t });
     if ('string' == typeof t) {
       const e = new URL(t, location.href);
@@ -552,12 +552,12 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
       { cacheKey: i.href, url: r.href }
     );
   }
-  class D {
+  class P {
     constructor(t) {
       (this.m = f(t)),
+        (this.O = new Map()),
         (this.K = new Map()),
-        (this.M = new Map()),
-        (this.O = new Map());
+        (this.M = new Map());
     }
     addToCacheList(t) {
       const e = [];
@@ -565,21 +565,21 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         'string' == typeof n
           ? e.push(n)
           : n && void 0 === n.revision && e.push(n.url);
-        const { cacheKey: t, url: i } = O(n),
+        const { cacheKey: t, url: i } = M(n),
           r = 'string' != typeof n && n.revision ? 'reload' : 'default';
-        if (this.K.has(i) && this.K.get(i) !== t)
+        if (this.O.has(i) && this.O.get(i) !== t)
           throw new s('add-to-cache-list-conflicting-entries', {
-            firstEntry: this.K.get(i),
+            firstEntry: this.O.get(i),
             secondEntry: t,
           });
         if ('string' != typeof n && n.integrity) {
-          if (this.O.has(t) && this.O.get(t) !== n.integrity)
+          if (this.M.has(t) && this.M.get(t) !== n.integrity)
             throw new s('add-to-cache-list-conflicting-integrities', {
               url: i,
             });
-          this.O.set(t, n.integrity);
+          this.M.set(t, n.integrity);
         }
-        if ((this.K.set(i, t), this.M.set(i, r), e.length > 0)) {
+        if ((this.O.set(i, t), this.K.set(i, r), e.length > 0)) {
           const t = `Workbox is precaching URLs without revision info: ${e.join(
             ', '
           )}\nThis is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
@@ -593,12 +593,12 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         i = await self.caches.open(this.m),
         r = await i.keys(),
         a = new Set(r.map((t) => t.url));
-      for (const [t, e] of this.K)
+      for (const [t, e] of this.O)
         a.has(e) ? n.push(t) : s.push({ cacheKey: e, url: t });
       const c = s.map(({ cacheKey: s, url: n }) => {
-        const i = this.O.get(s),
-          r = this.M.get(n);
-        return this.D({
+        const i = this.M.get(s),
+          r = this.K.get(n);
+        return this.P({
           cacheKey: s,
           cacheMode: r,
           event: t,
@@ -615,12 +615,12 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
     async activate() {
       const t = await self.caches.open(this.m),
         e = await t.keys(),
-        s = new Set(this.K.values()),
+        s = new Set(this.O.values()),
         n = [];
       for (const i of e) s.has(i.url) || (await t.delete(i), n.push(i.url));
       return { deletedURLs: n };
     }
-    async D({
+    async P({
       cacheKey: t,
       url: e,
       cacheMode: n,
@@ -642,7 +642,7 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
           : h.status < 400)
       )
         throw new s('bad-precaching-response', { url: e, status: h.status });
-      h.redirected && (h = await M(h)),
+      h.redirected && (h = await K(h)),
         await x({
           event: i,
           plugins: r,
@@ -653,14 +653,14 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         });
     }
     getURLsToCacheKeys() {
-      return this.K;
+      return this.O;
     }
     getCachedURLs() {
-      return [...this.K.keys()];
+      return [...this.O.keys()];
     }
     getCacheKeyForURL(t) {
       const e = new URL(t, location.href);
-      return this.K.get(e.href);
+      return this.O.get(e.href);
     }
     async matchPrecache(t) {
       const e = t instanceof Request ? t.url : t,
@@ -693,9 +693,9 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
     }
   }
   let T;
-  const P = () => (T || (T = new D()), T);
+  const D = () => (T || (T = new P()), T);
   const k = (t, e) => {
-    const s = P().getURLsToCacheKeys();
+    const s = D().getURLsToCacheKeys();
     for (const n of (function* (
       t,
       {
@@ -763,8 +763,8 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         S.push(...t);
       },
     },
-    W = (t) => {
-      const e = P(),
+    I = (t) => {
+      const e = D(),
         s = F.get();
       t.waitUntil(
         e.install({ event: t, plugins: s }).catch((t) => {
@@ -772,15 +772,15 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         })
       );
     },
-    B = (t) => {
-      const e = P();
+    W = (t) => {
+      const e = D();
       t.waitUntil(e.activate());
     };
   (t.CacheFirst = class {
     constructor(t = {}) {
       (this.m = w(t.cacheName)),
         (this.T = t.plugins || []),
-        (this.P = t.fetchOptions),
+        (this.D = t.fetchOptions),
         (this.k = t.matchOptions);
     }
     async handle({ event: t, request: e }) {
@@ -806,7 +806,7 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
       const s = await b({
           request: t,
           event: e,
-          fetchOptions: this.P,
+          fetchOptions: this.D,
           plugins: this.T,
         }),
         n = s.clone(),
@@ -836,7 +836,7 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
           if (!n) return null;
           const i = this.A(n),
             r = this.S(s);
-          d(r.expireEntries());
+          p(r.expireEntries());
           const a = r.updateTimestamp(e.url);
           if (t)
             try {
@@ -850,30 +850,111 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
           }),
           (this.F = t),
           (this.N = t.maxAgeSeconds),
-          (this.W = new Map()),
+          (this.I = new Map()),
           t.purgeOnQuotaError &&
-            ((e = () => this.deleteCacheAndMetadata()), p.add(e));
+            ((e = () => this.deleteCacheAndMetadata()), d.add(e));
       }
       S(t) {
         if (t === w()) throw new s('expire-custom-caches-only');
-        let e = this.W.get(t);
-        return e || ((e = new R(t, this.F)), this.W.set(t, e)), e;
+        let e = this.I.get(t);
+        return e || ((e = new v(t, this.F)), this.I.set(t, e)), e;
       }
       A(t) {
         if (!this.N) return !0;
-        const e = this.B(t);
+        const e = this.W(t);
         return null === e || e >= Date.now() - 1e3 * this.N;
       }
-      B(t) {
+      W(t) {
         if (!t.headers.has('date')) return null;
         const e = t.headers.get('date'),
           s = new Date(e).getTime();
         return isNaN(s) ? null : s;
       }
       async deleteCacheAndMetadata() {
-        for (const [t, e] of this.W)
+        for (const [t, e] of this.I)
           await self.caches.delete(t), await e.delete();
-        this.W = new Map();
+        this.I = new Map();
+      }
+    }),
+    (t.NetworkFirst = class {
+      constructor(t = {}) {
+        if (((this.m = w(t.cacheName)), t.plugins)) {
+          const e = t.plugins.some((t) => !!t.cacheWillUpdate);
+          this.T = e ? t.plugins : [O, ...t.plugins];
+        } else this.T = [O];
+        (this.B = t.networkTimeoutSeconds || 0),
+          (this.D = t.fetchOptions),
+          (this.k = t.matchOptions);
+      }
+      async handle({ event: t, request: e }) {
+        const n = [];
+        'string' == typeof e && (e = new Request(e));
+        const i = [];
+        let r;
+        if (this.B) {
+          const { id: s, promise: a } = this.H({
+            request: e,
+            event: t,
+            logs: n,
+          });
+          (r = s), i.push(a);
+        }
+        const a = this.j({ timeoutId: r, request: e, event: t, logs: n });
+        i.push(a);
+        let c = await Promise.race(i);
+        if ((c || (c = await a), !c))
+          throw new s('no-response', { url: e.url });
+        return c;
+      }
+      H({ request: t, logs: e, event: s }) {
+        let n;
+        return {
+          promise: new Promise((e) => {
+            n = setTimeout(async () => {
+              e(await this.G({ request: t, event: s }));
+            }, 1e3 * this.B);
+          }),
+          id: n,
+        };
+      }
+      async j({ timeoutId: t, request: e, logs: s, event: n }) {
+        let i, r;
+        try {
+          r = await b({
+            request: e,
+            event: n,
+            fetchOptions: this.D,
+            plugins: this.T,
+          });
+        } catch (t) {
+          i = t;
+        }
+        if ((t && clearTimeout(t), i || !r))
+          r = await this.G({ request: e, event: n });
+        else {
+          const t = r.clone(),
+            s = x({
+              cacheName: this.m,
+              request: e,
+              response: t,
+              event: n,
+              plugins: this.T,
+            });
+          if (n)
+            try {
+              n.waitUntil(s);
+            } catch (t) {}
+        }
+        return r;
+      }
+      G({ event: t, request: e }) {
+        return N({
+          cacheName: this.m,
+          request: e,
+          event: t,
+          matchOptions: this.k,
+          plugins: this.T,
+        });
       }
     }),
     (t.StaleWhileRevalidate = class {
@@ -882,9 +963,9 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
           ((this.m = w(t.cacheName)), (this.T = t.plugins || []), t.plugins)
         ) {
           const e = t.plugins.some((t) => !!t.cacheWillUpdate);
-          this.T = e ? t.plugins : [E, ...t.plugins];
-        } else this.T = [E];
-        (this.P = t.fetchOptions), (this.k = t.matchOptions);
+          this.T = e ? t.plugins : [O, ...t.plugins];
+        } else this.T = [O];
+        (this.D = t.fetchOptions), (this.k = t.matchOptions);
       }
       async handle({ event: t, request: e }) {
         'string' == typeof e && (e = new Request(e));
@@ -915,7 +996,7 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
         const s = await b({
             request: t,
             event: e,
-            fetchOptions: this.P,
+            fetchOptions: this.D,
             plugins: this.T,
           }),
           n = x({
@@ -951,10 +1032,10 @@ define('./workbox-e032be30.js', ['exports'], function (t) {
     }),
     (t.precacheAndRoute = function (t, e) {
       !(function (t) {
-        P().addToCacheList(t),
+        D().addToCacheList(t),
           t.length > 0 &&
-            (self.addEventListener('install', W),
-            self.addEventListener('activate', B));
+            (self.addEventListener('install', I),
+            self.addEventListener('activate', W));
       })(t),
         A(e);
     }),
