@@ -1,0 +1,8 @@
+{
+  "allLanguages": [ "en-US" ],
+  "defaultLanguage": "en-US",
+  "currentPagesDir": "pages_",
+  "finalPagesDir": "pages",
+  "localesPath": "locales",
+  "defaultLangRedirect": "lang-path"
+}
